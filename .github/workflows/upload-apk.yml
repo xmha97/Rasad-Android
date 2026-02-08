@@ -22,4 +22,4 @@ jobs:
         uses: actions/upload-artifact@v5
         with:
           name: bouncy
-          path: app/build/outputs/apk/release/Rasad.apk
+          path: app/build/outputs/apk/release/app-release.apk

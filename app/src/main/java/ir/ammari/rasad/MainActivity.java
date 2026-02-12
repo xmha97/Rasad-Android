@@ -31,10 +31,10 @@ public class MainActivity extends Activity {
 
     private void testURL(TextView textView, String name, URL url) {
         new Thread(() -> {
-            boolean caseResult = false;
-            try (InputStream inputStream = url.openStream()) {
-                ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-                byte[] buf = new byte[1024];
+            var caseResult = false;
+            try (final var inputStream = url.openStream()) {
+                final var outputStream = new ByteArrayOutputStream();
+                var buf = new byte[1024];
                 int readLen;
                 while ((readLen = inputStream.read(buf)) != -1) {
                     outputStream.write(buf, 0, readLen);

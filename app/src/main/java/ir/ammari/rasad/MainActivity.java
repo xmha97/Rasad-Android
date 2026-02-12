@@ -44,7 +44,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final TextView view = new TextView(this);
-        final StringBuilder outputString = new StringBuilder("\n\n\nBegin");
+        final StringBuilder outputString = new StringBuilder("\n\n\nBegin\n");
         view.setText(outputString);
         setContentView(view);
 
@@ -68,5 +68,8 @@ public class MainActivity extends Activity {
             MediaPlayer mp = MediaPlayer.create(this, R.raw.notification_simple_01);
             mp.start();
         }
+
+        outputString.append("\n").append("End");
+        view.setText(outputString);
     }
 }

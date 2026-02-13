@@ -88,6 +88,7 @@ public class MainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             textView.setTextIsSelectable(true);
         }
+        textView.setHorizontallyScrolling(true);
         linearLayout.addView(textView);
         final var button = new Button(this);
         button.setText("Run");

@@ -16,7 +16,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -43,13 +42,8 @@ public class MainActivity extends Activity {
         new Thread(() -> {
             var result = false;
             try (final var inputStream = url.openStream()) {
-                final var outputStream = new ByteArrayOutputStream();
-                final var buf = new byte[1024];
-                int readLen;
-                while ((readLen = inputStream.read(buf)) != -1) {
-                    outputStream.write(buf, 0, readLen);
-                }
-                if (outputStream.toString().strip().equals("200")) result = true;
+                if (inputStream.read() == '2' && inputStream.read() == '0' && inputStream.read() == '0')
+                    result = true;
             } catch (IOException e) {
                 e.printStackTrace();
             }

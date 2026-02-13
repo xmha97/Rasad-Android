@@ -8,26 +8,8 @@
         errorLine2="        ~~~~~~~~~~">
         <location
             file="build.gradle.kts"
-            line="14"
+            line="11"
             column="9"/>
-    </issue>
-
-    <issue
-        id="IconLauncherShape"
-        message="Launcher icons should not fill every pixel of their square region; see the design guide for details">
-        <location
-            file="src/main/res/mipmap/ic_launcher.png"/>
-    </issue>
-
-    <issue
-        id="UnknownNullness"
-        message="Unknown nullability; explicitly declare as `@Nullable` or `@NonNull` to improve Kotlin interoperability; see https://developer.android.com/kotlin/interop#nullability_annotations"
-        errorLine1="    protected void onCreate(Bundle savedInstanceState) {"
-        errorLine2="                            ~~~~~~">
-        <location
-            file="src/main/java/ir/ammari/rasad/MainActivity.java"
-            line="70"
-            column="29"/>
     </issue>
 
 </issues>

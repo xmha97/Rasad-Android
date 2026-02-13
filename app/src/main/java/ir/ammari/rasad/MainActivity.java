@@ -9,6 +9,9 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -33,7 +36,7 @@ public class MainActivity extends Activity {
     }};
     private final Map<String, Boolean> result = new HashMap<>();
 
-    private void testURL(TextView textView, String name, URL url) {
+    private void testURL(@NonNull TextView textView, @NonNull String name, @NonNull URL url) {
         new Thread(() -> {
             var caseResult = false;
             try (final var inputStream = url.openStream()) {
@@ -55,7 +58,7 @@ public class MainActivity extends Activity {
         }).start();
     }
 
-    private void displayResult(TextView textView) {
+    private void displayResult(@NonNull TextView textView) {
         final var text = new SpannableStringBuilder();
         text.append("Begin\n\n\n");
         for (final var entry : sites.entrySet()) {
@@ -76,7 +79,7 @@ public class MainActivity extends Activity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final var textView = new TextView(this);
         displayResult(textView);

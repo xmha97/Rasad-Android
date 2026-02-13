@@ -1,6 +1,3 @@
-import org.gradle.kotlin.dsl.lint
-import kotlin.plus
-
 plugins {
     alias(libs.plugins.com.android.application)
 }

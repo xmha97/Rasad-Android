@@ -66,7 +66,7 @@ public class MainActivity extends Activity {
                 final var success = Boolean.TRUE.equals(status.get(key));
                 final var color = new ForegroundColorSpan(success ? Color.GREEN : Color.RED);
                 final var string = success ? "success" : "fail";
-                SpannableString spannable = new SpannableString(string);
+                final var spannable = new SpannableString(string);
                 spannable.setSpan(color, 0, string.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 text.append(spannable);
                 text.append("\n");

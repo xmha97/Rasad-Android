@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends Activity {
-    final Map<String, String> sites = new HashMap<>() {{
+    private static final Map<String, String> sites = new HashMap<>() {{
         put("GitHub Gists", "https://gist.githubusercontent.com/xmha97/94f6ba425d9874179fdd73fc0e2dc899/raw/e3a7ca5109c651f711000b3a02b4e032bd1d695f/status");
         put("GitHub Repository", "https://raw.githubusercontent.com/xmha97/test/refs/heads/main/status");
         put("GitHub Releases", "https://github.com/xmha97/test/releases/download/v1.0.0/status");
@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
         put("HamGit", "https://hamgit.ir/xmha97/test/-/raw/main/status");
         put("AbreHamrahi", "https://abrehamrahi.ir/o/public/EaGlAEy6");
     }};
-    final Map<String, Boolean> result = new HashMap<>();
+    private final Map<String, Boolean> result = new HashMap<>();
 
     private void testURL(TextView textView, String name, URL url) {
         new Thread(() -> {
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
         }).start();
     }
 
-    void displayResult(TextView textView) {
+    private void displayResult(TextView textView) {
         final var text = new SpannableStringBuilder();
         text.append("Begin\n\n\n");
         for (Map.Entry<String, String> entry : sites.entrySet()) {

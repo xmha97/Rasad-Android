@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
             var caseResult = false;
             try (final var inputStream = url.openStream()) {
                 final var outputStream = new ByteArrayOutputStream();
-                var buf = new byte[1024];
+                final var buf = new byte[1024];
                 int readLen;
                 while ((readLen = inputStream.read(buf)) != -1) {
                     outputStream.write(buf, 0, readLen);
@@ -50,9 +50,9 @@ public class MainActivity extends Activity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            final var finalResult = caseResult;
+            final var finalCaseResult = caseResult;
             runOnUiThread(() -> {
-                result.put(name, finalResult);
+                result.put(name, finalCaseResult);
                 displayResult(textView);
             });
         }).start();

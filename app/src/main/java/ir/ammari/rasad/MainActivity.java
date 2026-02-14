@@ -8,6 +8,8 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -79,24 +81,43 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final var linearLayout = new LinearLayout(this);
-        linearLayout.setOrientation(LinearLayout.VERTICAL);
-        final var space = new TextView(this);
-        space.setText("\n\n\n");
-        linearLayout.addView(space);
         final var textView = new TextView(this);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             textView.setTextIsSelectable(true);
         }
         textView.setHorizontallyScrolling(true);
-        linearLayout.addView(textView);
-        final var button = new Button(this);
-        button.setText(R.string.test);
-        linearLayout.addView(button);
-        button.setOnClickListener((v) -> testAll(textView));
-        final var root = new ScrollView(this);
+        final var scrollView = new ScrollView(this);
+        scrollView.addView(textView);
+        final var scrollViewParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        );
+        scrollViewParams.weight = 1f;
+        scrollView.setLayoutParams(scrollViewParams);
+        final var root = new LinearLayout(this);
+        root.setOrientation(LinearLayout.VERTICAL);
+        root.addView(scrollView);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            root.setFitsSystemWindows(true);
+        }
+        final var buttonLayoutParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        );
+        buttonLayoutParams.weight = 1f;
+        final var buttonBar = new LinearLayout(this);
+        final var testButton = new Button(this);
+        testButton.setText(R.string.test);
+        testButton.setOnClickListener((v) -> testAll(textView));
+        testButton.setLayoutParams(buttonLayoutParams);
+        buttonBar.addView(testButton);
+        final var clearButton = new Button(this);
+        clearButton.setText(R.string.clear);
+        clearButton.setOnClickListener((v) -> textView.setText(""));
+        clearButton.setLayoutParams(buttonLayoutParams);
+        buttonBar.addView(clearButton);
+        root.addView(buttonBar);
         setContentView(root);
-        root.addView(linearLayout);
     }
 
     private void testAll(TextView textView) {

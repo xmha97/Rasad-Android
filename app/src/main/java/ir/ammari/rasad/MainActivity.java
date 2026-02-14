@@ -1,6 +1,5 @@
 package ir.ammari.rasad;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Build;
@@ -44,7 +43,7 @@ public class MainActivity extends Activity {
             var result = "Invalid result";
             try (final var inputStream = url.openStream()) {
                 if (inputStream.read() == '2' && inputStream.read() == '0' && inputStream.read() == '0')
-                    result = "200";
+                    result = "success";
             } catch (IOException e) {
                 result = e.getMessage();
                 e.printStackTrace();
@@ -52,14 +51,14 @@ public class MainActivity extends Activity {
             final var finalResult = result;
             runOnUiThread(() -> {
                 status.put(name, finalResult);
-                displayResult(status, textView, true);
+                displayResult(status, textView);
             });
         }).start();
     }
 
-    private void displayResult(Map<String, String> status, @NonNull TextView textView, boolean inProgress) {
+    private void displayResult(Map<String, String> status, @NonNull TextView textView) {
         final var text = new SpannableStringBuilder();
-        text.append("Begin\n\n\n\n");
+        text.append("\n\n\n\n");
         for (final var entry : sites.entrySet()) {
             final var key = entry.getKey();
             text.append(key);
@@ -73,12 +72,11 @@ public class MainActivity extends Activity {
                 spannable.setSpan(color, 0, result.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 text.append(spannable);
                 text.append("\n");
-            } else text.append(inProgress ? "…\n" : "\n");
+            } else text.append("…\n");
         }
         textView.setText(text);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,21 +86,21 @@ public class MainActivity extends Activity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             textView.setTextIsSelectable(true);
         }
+        textView.setText("\n\n\n\n");
         textView.setHorizontallyScrolling(true);
         linearLayout.addView(textView);
         final var button = new Button(this);
-        button.setText("Run");
+        button.setText(R.string.test);
         linearLayout.addView(button);
         button.setOnClickListener((v) -> testAll(textView));
         final var root = new ScrollView(this);
         setContentView(root);
         root.addView(linearLayout);
-        displayResult(new HashMap<>(), textView, false);
     }
 
     private void testAll(TextView textView) {
         final var status = new HashMap<String, String>();
-        displayResult(status, textView, true);
+        displayResult(status, textView);
         for (final var entry : sites.entrySet()) {
             try {
                 testURL(status, textView, entry.getKey(), new URL(entry.getValue()));

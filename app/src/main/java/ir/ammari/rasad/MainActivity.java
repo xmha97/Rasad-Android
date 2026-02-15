@@ -86,6 +86,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         final var textView = new TextView(this);
         textView.setId(R.id.result);
+        textView.setFreezesText(true);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             textView.setTextIsSelectable(true);
         }

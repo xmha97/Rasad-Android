@@ -7,7 +7,7 @@
         android:supportsRtl="true">
         <activity
             android:name=".MainActivity"
-            android:configChanges="keyboardHidden|screenSize|screenLayout|uiMode|orientation"
+            android:configChanges="keyboardHidden|screenSize|screenLayout|orientation"
             android:exported="true"
             android:theme="@style/Theme">
             <intent-filter>

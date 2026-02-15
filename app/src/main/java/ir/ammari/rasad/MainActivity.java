@@ -9,6 +9,7 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -88,6 +89,9 @@ public class MainActivity extends Activity {
             textView.setTextIsSelectable(true);
         }
         textView.setHorizontallyScrolling(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            textView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        }
         final var scrollView = new ScrollView(this);
         scrollView.addView(textView);
         final var scrollViewParams = new LinearLayout.LayoutParams(

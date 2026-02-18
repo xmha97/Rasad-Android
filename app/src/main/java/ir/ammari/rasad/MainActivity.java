@@ -38,8 +38,9 @@ public class MainActivity extends Activity {
         put("GitLab", "https://gitlab.com/xmha97/test/-/raw/master/status");
         put("DropBox", "https://www.dropbox.com/scl/fi/dovory2z1y9xnj6kxwyq7/status?rlkey=48kb8gpm3fjnx76oglv1bm3u0&st=hy5uz0th&dl=1");
         put("Archive", "https://archive.org/download/xmha97/status");
+        put("Archive (Tor)", "https://archivep75mbjunhxc6x4j5mwjmomyxb573v42baldlqu56ruil2oiad.onion/download/xmha97/status");
         put("Pastebin", "https://pastebin.com/raw/ER5BRSx7");
-        put("HamGit", "https://hamgit.ir/xmha97/test/-/raw/main/status");
+        put("HamGit (GitLab)", "https://hamgit.ir/xmha97/test/-/raw/main/status");
         put("AbreHamrahi", "https://abrehamrahi.ir/o/public/EaGlAEy6");
     }};
 

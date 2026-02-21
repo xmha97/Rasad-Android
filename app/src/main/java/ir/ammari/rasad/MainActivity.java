@@ -40,6 +40,9 @@ public class MainActivity extends Activity {
         put("Archive", "https://archive.org/download/xmha97/status");
         put("Archive (Tor)", "https://archivep75mbjunhxc6x4j5mwjmomyxb573v42baldlqu56ruil2oiad.onion/download/xmha97/status");
         put("Pastebin", "https://pastebin.com/raw/ER5BRSx7");
+        put("Wikipedia (English)", "https://en.wikipedia.org/w/index.php?title=User:Xmha97/status.js&action=raw&ctype=text/javascript");
+        put("Wikipedia (Persian)", "https://fa.wikipedia.org/w/index.php?title=User:Xmha97/status.js&action=raw&ctype=text/javascript");
+        put("Wikipedia (Arabic)", "https://ar.wikipedia.org/w/index.php?title=User:Xmha97/status.js&action=raw&ctype=text/javascript");
         put("HamGit (GitLab)", "https://hamgit.ir/xmha97/test/-/raw/main/status");
         put("AbreHamrahi", "https://abrehamrahi.ir/o/public/EaGlAEy6");
     }};
